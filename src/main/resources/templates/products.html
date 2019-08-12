@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Core Online Tutorial - List Products</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -35,6 +35,11 @@
                 <td><a th:href="${'/products/' + product.id}">View</a> </td>
             </tr>
         </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/product/new">New Product</a>
+        </div>
     </div>
 </div>
 </body>
