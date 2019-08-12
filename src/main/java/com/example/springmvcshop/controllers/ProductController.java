@@ -40,7 +40,7 @@ public class ProductController {
     }
 
     @RequestMapping("/product/new")
-    public String newProdict(Model model) {
+    public String newProduct(Model model) {
         model.addAttribute("product", new Product());
 
         return "productform";
