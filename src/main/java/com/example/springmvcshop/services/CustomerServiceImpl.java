@@ -4,7 +4,8 @@ import com.example.springmvcshop.domain.Customer;
 import com.example.springmvcshop.domain.DomainObject;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class CustomerServiceImpl extends AbstractMapService implements CustomerService {

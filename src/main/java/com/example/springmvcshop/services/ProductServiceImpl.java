@@ -5,7 +5,7 @@ import com.example.springmvcshop.domain.Product;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl extends AbstractMapService implements ProductService {
@@ -67,7 +67,7 @@ public class ProductServiceImpl extends AbstractMapService implements ProductSer
 
         Product product5 = new Product();
         product5.setId(5);
-        product5.setDescription("Product 2");
+        product5.setDescription("Product 5");
         product5.setPrice(new BigDecimal("25.99"));
         product5.setImageUrl("http://example.com/product5");
 
