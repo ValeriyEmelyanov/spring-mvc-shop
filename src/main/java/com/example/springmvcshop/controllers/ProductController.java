@@ -36,7 +36,7 @@ public class ProductController {
     @RequestMapping("/product/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("product", productService.getById(id));
-        return "product/productForm";
+        return "product/productform";
     }
 
     @RequestMapping("/product/new")
