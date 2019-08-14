@@ -5,10 +5,7 @@ import com.example.springmvcshop.services.ProductService;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -71,7 +68,7 @@ public class ProductControllerTest {
     public void testEdit() throws Exception {
         Integer id = 1;
 
-        // Tell Mockoti stub to return new product for id 1
+        // Tell Mockito stub to return new product for id 1
         when(productService.getById(id)).thenReturn(new Product());
 
         mockMvc.perform(get("/product/edit/1"))
@@ -93,6 +90,7 @@ public class ProductControllerTest {
                 .andExpect(model().attribute("product", instanceOf(Product.class)));
     }
 
+    @Test
     public void testSaveOrUpdate() throws Exception {
         Integer id = 1;
         String description = "Test Description";
@@ -105,7 +103,7 @@ public class ProductControllerTest {
         returnProduct.setPrice(price);
         returnProduct.setImageUrl(imageUrl);
 
-        when(productService.saveOrUpdate((Product) Matchers.<Product>any(Product.class))).thenReturn(returnProduct);
+        when(productService.saveOrUpdate(ArgumentMatchers.<Product>any())).thenReturn(returnProduct);
 
         mockMvc.perform(post("/product")
                 .param("id", "1")
