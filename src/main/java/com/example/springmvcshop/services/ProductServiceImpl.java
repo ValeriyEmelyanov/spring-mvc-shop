@@ -2,12 +2,14 @@ package com.example.springmvcshop.services;
 
 import com.example.springmvcshop.domain.DomainObject;
 import com.example.springmvcshop.domain.Product;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Service
+@Profile("map")
 public class ProductServiceImpl extends AbstractMapService implements ProductService {
 
     @Override
