@@ -1,6 +1,8 @@
 package com.example.springmvcshop.bootstrap;
 
+import com.example.springmvcshop.domain.Customer;
 import com.example.springmvcshop.domain.Product;
+import com.example.springmvcshop.services.CustomerService;
 import com.example.springmvcshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -14,14 +16,22 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 
     ProductService productService;
 
+    CustomerService customerService;
+
     @Autowired
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
 
+    @Autowired
+    public void setCustomerService(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         loadProducts();
+        loadCustomers();
     }
 
     private void loadProducts() {
@@ -55,4 +65,38 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
         product5.setImageUrl("http://example.com/product5");
         productService.saveOrUpdate(product5);
     }
+
+    private void loadCustomers() {
+        Customer customer1 = new Customer();
+        customer1.setFirstName("Micheal");
+        customer1.setLastName("Weston");
+        customer1.setAddressLine1("1 Main St");
+        customer1.setCity("Miami");
+        customer1.setState("Florida");
+        customer1.setZipCode("33101");
+        customer1.setEmail("micheal@burnnotice.com");
+        customer1.setPhoneNumber("305.333.0101");
+        customerService.saveOrUpdate(customer1);
+
+        Customer customer2 = new Customer();
+        customer2.setFirstName("Fiona");
+        customer2.setLastName("Glenanne");
+        customer2.setAddressLine1("1 Key Biscane Ave");
+        customer2.setCity("Miami");
+        customer2.setState("Florida");
+        customer2.setZipCode("33101");
+        customer2.setEmail("fiona@burnnotice.com");
+        customer2.setPhoneNumber("305.323.0233");
+        customerService.saveOrUpdate(customer2);
+
+        Customer customer3 = new Customer();
+        customer3.setFirstName("Sam");
+        customer3.setLastName("Axe");
+        customer3.setAddressLine1("1 Little Cuba Road");
+        customer3.setCity("Miami");
+        customer3.setState("Florida");
+        customer3.setZipCode("33101");
+        customer3.setEmail("sam@burnnotice.com");
+        customer3.setPhoneNumber("305.426.9832");
+        customerService.saveOrUpdate(customer3);    }
 }

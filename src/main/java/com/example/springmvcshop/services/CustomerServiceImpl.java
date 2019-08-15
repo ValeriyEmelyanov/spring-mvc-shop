@@ -2,12 +2,14 @@ package com.example.springmvcshop.services;
 
 import com.example.springmvcshop.domain.Customer;
 import com.example.springmvcshop.domain.DomainObject;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Profile("map")
 public class CustomerServiceImpl extends AbstractMapService implements CustomerService {
 
     @Override
