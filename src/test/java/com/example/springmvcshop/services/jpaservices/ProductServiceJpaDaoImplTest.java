@@ -1,7 +1,8 @@
-package com.example.springmvcshop.services;
+package com.example.springmvcshop.services.jpaservices;
 
 import com.example.springmvcshop.config.JpaIntegrationConfig;
 import com.example.springmvcshop.domain.Product;
+import com.example.springmvcshop.services.ProductService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.springmvcshop.services;
+package com.example.springmvcshop.services.mapservices;
 
 import com.example.springmvcshop.domain.DomainObject;
 
@@ -9,7 +9,6 @@ public abstract class AbstractMapService {
 
     public AbstractMapService() {
         domainMap = new HashMap<>();
-        loadDomainObjects();
     }
 
     public List<DomainObject> listAll() {
@@ -36,8 +35,6 @@ public abstract class AbstractMapService {
     public void delete(Integer id) {
         domainMap.remove(id);
     }
-
-    protected abstract void loadDomainObjects();
 
     private Integer getNextKey() {
         if (domainMap.isEmpty()) {

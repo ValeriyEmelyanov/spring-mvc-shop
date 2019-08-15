@@ -1,7 +1,9 @@
-package com.example.springmvcshop.services;
+package com.example.springmvcshop.services.mapservices;
 
 import com.example.springmvcshop.domain.DomainObject;
 import com.example.springmvcshop.domain.Product;
+import com.example.springmvcshop.services.ProductService;
+import com.example.springmvcshop.services.mapservices.AbstractMapService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,11 @@ import java.util.List;
 @Service
 @Profile("map")
 public class ProductServiceImpl extends AbstractMapService implements ProductService {
+
+    public ProductServiceImpl() {
+        super();
+        loadDomainObjects();
+    }
 
     @Override
     public List<DomainObject> listAll() {
@@ -32,7 +39,6 @@ public class ProductServiceImpl extends AbstractMapService implements ProductSer
         super.delete(id);
     }
 
-    @Override
     protected void loadDomainObjects() {
 
         Product product1 = new Product();
