@@ -31,7 +31,7 @@ public class User implements DomainObject {
 
     @Override
     public void setId(Integer id) {
-
+        this.id = id;
     }
 
     public Integer getVersion() {
