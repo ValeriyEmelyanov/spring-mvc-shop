@@ -91,11 +91,11 @@ public class CustomerControllerTest {
         String lastName = "Ivanov";
         String email = "VasiliyIvanov@test.com";
         String phoneNumber = "123456";
-        String addressLine1 = "addressLine1";
-        String addressLine2 = "addressLine2";
-        String city = "Ivanovo";
-        String state = "...";
-        String zipCode = "000001";
+        //String addressLine1 = "addressLine1";
+        //String addressLine2 = "addressLine2";
+        //String city = "Ivanovo";
+        //String state = "...";
+        //String zipCode = "000001";
 
         Customer returnCustomer = new Customer();
         returnCustomer.setId(id);
@@ -103,11 +103,6 @@ public class CustomerControllerTest {
         returnCustomer.setLastName(lastName);
         returnCustomer.setEmail(email);
         returnCustomer.setPhoneNumber(phoneNumber);
-        returnCustomer.setAddressLine1(addressLine1);
-        returnCustomer.setAddressLine2(addressLine2);
-        returnCustomer.setCity(city);
-        returnCustomer.setState(state);
-        returnCustomer.setZipCode(zipCode);
 
         when(customerService.saveOrUpdate(ArgumentMatchers.<Customer>any())).thenReturn(returnCustomer);
 
@@ -116,12 +111,7 @@ public class CustomerControllerTest {
                 .param("firstName", firstName)
                 .param("lastName", lastName)
                 .param("email", email)
-                .param("phoneNumber", phoneNumber)
-                .param("addressLine1", addressLine1)
-                .param("addressLine2", addressLine2)
-                .param("city", city)
-                .param("state", state)
-                .param("zipCode", zipCode))
+                .param("phoneNumber", phoneNumber))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/customer/show/1"))
                 .andExpect(model().attribute("customer", instanceOf(Customer.class)))
@@ -129,12 +119,7 @@ public class CustomerControllerTest {
                 .andExpect(model().attribute("customer", hasProperty("firstName", is(firstName))))
                 .andExpect(model().attribute("customer", hasProperty("lastName", is(lastName))))
                 .andExpect(model().attribute("customer", hasProperty("email", is(email))))
-                .andExpect(model().attribute("customer", hasProperty("phoneNumber", is(phoneNumber))))
-                .andExpect(model().attribute("customer", hasProperty("addressLine1", is(addressLine1))))
-                .andExpect(model().attribute("customer", hasProperty("addressLine2", is(addressLine2))))
-                .andExpect(model().attribute("customer", hasProperty("city", is(city))))
-                .andExpect(model().attribute("customer", hasProperty("state", is(state))))
-                .andExpect(model().attribute("customer", hasProperty("zipCode", is(zipCode))));
+                .andExpect(model().attribute("customer", hasProperty("phoneNumber", is(phoneNumber))));
 
         ArgumentCaptor<Customer> boundCustomer = ArgumentCaptor.forClass(Customer.class);
         verify(customerService).saveOrUpdate(boundCustomer.capture());
@@ -144,11 +129,6 @@ public class CustomerControllerTest {
         assertEquals(lastName, boundCustomer.getValue().getLastName());
         assertEquals(email, boundCustomer.getValue().getEmail());
         assertEquals(phoneNumber, boundCustomer.getValue().getPhoneNumber());
-        assertEquals(addressLine1, boundCustomer.getValue().getAddressLine1());
-        assertEquals(addressLine2, boundCustomer.getValue().getAddressLine2());
-        assertEquals(city, boundCustomer.getValue().getCity());
-        assertEquals(state, boundCustomer.getValue().getState());
-        assertEquals(zipCode, boundCustomer.getValue().getZipCode());
     }
 
     @Test

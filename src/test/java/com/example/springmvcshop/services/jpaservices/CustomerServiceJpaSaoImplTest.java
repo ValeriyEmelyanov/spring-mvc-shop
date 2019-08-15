@@ -45,38 +45,28 @@ public class CustomerServiceJpaSaoImplTest {
     public void saveOrUpdate() {
         String firstName = "First";
         String lastName = "Last";
-        String addressLine1 = "address line 1";
-        String addressLine2 = "address line 2";
-        String city = "Big";
-        String state = "Very big";
-        String zipCode = "11101";
         String email = "test@test.com";
         String phoneNumber = "301.302.0101";
+        //String addressLine1 = "address line 1";
+        //String addressLine2 = "address line 2";
+        //String city = "Big";
+        //String state = "Very big";
+        //String zipCode = "11101";
 
         Customer customer = new Customer();
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
-        customer.setAddressLine1(addressLine1);
-        customer.setAddressLine2(addressLine2);
-        customer.setCity(city);
-        customer.setState(state);
-        customer.setZipCode(zipCode);
         customer.setEmail(email);
         customer.setPhoneNumber(phoneNumber);
         Customer returnedCustomer = customerService.saveOrUpdate(customer);
 
         assert returnedCustomer.getFirstName() == firstName;
         assert returnedCustomer.getLastName() == lastName;
-        assert returnedCustomer.getAddressLine1() == addressLine1;
-        assert returnedCustomer.getAddressLine2() == addressLine2;
-        assert returnedCustomer.getCity() == city;
-        assert returnedCustomer.getState() == state;
-        assert returnedCustomer.getZipCode() == zipCode;
         assert returnedCustomer.getEmail() == email;
         assert returnedCustomer.getPhoneNumber() == phoneNumber;
     }
 
-    @Test
-    public void delete() {
-    }
+    //@Test
+    //public void delete() {
+    //}
 }
